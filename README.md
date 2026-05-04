@@ -1,21 +1,14 @@
-# Vibrautomation 🔧
-IoT-based Motor Health Analyser
+## Setup & Run
 
-## Overview
-Real-time motor fault detection system using vibration analysis,
-ML classification and live web dashboard.
+### Hardware
+- ESP32 + MPU6050 connected via I2C (SDA=21, SCL=22)
+- Flash `firmware/review1_code.ino` using Arduino IDE
 
-## Tech Stack
-- Hardware: ESP32 + MPU6050 (accelerometer)
-- Signal Processing: RMS, Kurtosis-based health scoring
-- ML Model: SVM (cross-validated, highest accuracy)
-- Backend: Flask + SocketIO + SQLite
-- Frontend: Real-time web dashboard
+### Backend
+```bash
+pip install flask scikit-learn pandas numpy
+python backend/app_with_ml.py
+```
 
-## Architecture
-ESP32 → MPU6050 → I2C → WiFi → Flask API → SVM Model → Dashboard
-
-## Results
-- Fault detection accuracy: >95%
-- Real-time monitoring with <1s latency
-- Classifies: Normal / Bearing Fault / Imbalance
+### Access Dashboard
+Open browser → `http://localhost:5001`
